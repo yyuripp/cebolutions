@@ -1,0 +1,13 @@
+public class Aluno {
+    private String nome;
+    String cpf;
+    boolean isAluno;
+    
+    public Aluno (String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;    
+    }   
+     public void setIsAluno(boolean isAluno) {
+         this.isAluno = isAluno;
+     }
+}
