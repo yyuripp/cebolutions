@@ -13,30 +13,30 @@ import java.util.Scanner;
 
 /**
  *
- * @author vitor.ccarvalho
+ * @author pc
  */
-public class Perguntas {
-    
+public class GrauSatisfacao {
     static Connection conn;
     static Statement stmt;
-    private String[] perguntas = new String[10];
+    private String[] satisfacao = new String[5];
+    private short[] resp = new short[10];
     private int i = 0;
     
-    public void populaVetor(String perg) {
-        perguntas[i] = perg;
-        //System.out.println("Perguntas: " + perguntas[i]);
+    public void populaVetor(String satis) {
+        satisfacao[i] = satis;
+        //System.out.println(satisfacao[i]);
         i++;
     }
     
-    public void perguntas(){
+    public void satisfacao(){
         try {
 
             stmt = conn.createStatement();
-            ResultSet perg = stmt.executeQuery("SELECT * FROM tblPerguntas");
+            ResultSet satis = stmt.executeQuery("SELECT * FROM tblSatisfacao");
 
-            while (perg.next()) {
-                String perguntas = perg.getString("descricao");
-                populaVetor(perguntas);
+            while (satis.next()) {
+                String satisfacao = satis.getString("descricaoSatisfacao");
+                populaVetor(satisfacao);
             }
 
             stmt.close();
@@ -46,7 +46,7 @@ public class Perguntas {
             e.printStackTrace();
         }
     }
-
+/*
     public char[] perguntasUsuario() {
         Scanner entrada = new Scanner(System.in);
         char[] resp = new char[10];
@@ -55,7 +55,6 @@ public class Perguntas {
             System.out.println("A. Muito bom");
             System.out.println("B. Bom");
             System.out.println("C. Regular");
-            System.out.println("D. Ruim");
             System.out.println("E. Muito Ruim");
             System.out.println("");
             System.out.print("Resposta: ");
@@ -63,12 +62,18 @@ public class Perguntas {
         }
         return resp;
     }
+    */
     
-    public String[] getPerguntas() {
-        return perguntas;
-    }
-    public void imprimePerguntas(int i){
-            System.out.println(perguntas[i]);
+    
+    public void imprimeSatisfacao(){
+        
+        
+            System.out.println("A: "+satisfacao[0]);
+            System.out.println("B: "+satisfacao[1]);
+            System.out.println("C: "+satisfacao[2]);
+            System.out.println("D: "+satisfacao[3]);
+            System.out.println("E: "+satisfacao[4]);
+        
     }
     public void iniciarConexao() {
         Conexao conexao = new Conexao();
@@ -94,4 +99,20 @@ public class Perguntas {
             System.out.println("VendorError: " + ex.getErrorCode());
         }
     }
+
+    /**
+     * @param resp the resp to set
+     */
+    public void setResp(int i, short resp) {
+        this.resp[i] = resp;
+    }
+
+    /**
+     * @return the resp
+     */
+    public short[] getResp() {
+        return resp;
+    }
 }
+
+

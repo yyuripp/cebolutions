@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cebolutionsbeta1;
+package projetocebolutions;
 
 import java.util.Scanner;
 import java.sql.*;
@@ -23,7 +23,6 @@ public class Conexao {
 
     public Conexao() {
     }
-
     public Connection getConexao() {
         Connection conn = null;
         String connectionUrl = "jdbc:sqlserver://localhost:1433;" + "databaseName=DB_CEBOLUTIONS;";
