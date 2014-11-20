@@ -24,7 +24,6 @@ public class GrauSatisfacao {
     
     public void populaVetor(String satis) {
         satisfacao[i] = satis;
-        //System.out.println(satisfacao[i]);
         i++;
     }
     
@@ -46,24 +45,6 @@ public class GrauSatisfacao {
             e.printStackTrace();
         }
     }
-/*
-    public char[] perguntasUsuario() {
-        Scanner entrada = new Scanner(System.in);
-        char[] resp = new char[10];
-        for (int i = 0; i < perguntas.length; i++) {
-            System.out.println(perguntas[i]);
-            System.out.println("A. Muito bom");
-            System.out.println("B. Bom");
-            System.out.println("C. Regular");
-            System.out.println("E. Muito Ruim");
-            System.out.println("");
-            System.out.print("Resposta: ");
-            resp[i] = entrada.next().charAt(0);
-        }
-        return resp;
-    }
-    */
-    
     
     public void imprimeSatisfacao(){
         
@@ -112,6 +93,10 @@ public class GrauSatisfacao {
      */
     public short[] getResp() {
         return resp;
+    }
+    
+    public String[] getSatisfacao() {
+        return satisfacao;
     }
 }
 

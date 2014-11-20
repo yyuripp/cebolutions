@@ -20,33 +20,29 @@ public class Aluno {
     public Aluno (){
         
     }
-
-    
-    //public Aluno (String nome, String cpf) {
-    //    this.nome = nome;
-    //    this.cpf = cpf;    
-    //}   
+   
      public void setIsAluno(boolean isAluno) {
          this.isAluno = isAluno;
      }
+     
      public void Usuario(){
         Scanner entrada = new Scanner(System.in);
         System.out.println("");
         System.out.println("----- Cadastro do Usuario ----- ");
         System.out.println("");
         System.out.println("Digite seu nome: ");
-        this.nome = entrada.nextLine();
+        this.setNome(entrada.nextLine());
         System.out.println("Digite seu CPF:");
-        this.cpf = entrada.nextLine();
+        this.setCpf(entrada.nextLine());
         System.out.println("");
         System.out.println("1. Aluno");
         System.out.println("2. Ex-Aluno");
         System.out.print("Digite uma opção: ");
         int isAluno = entrada.nextInt();
         if (isAluno == 1) {
-            this.isAluno = true;
+            setIsAluno(true);
         } else if (isAluno == 2) {
-            this.isAluno = false;
+            setIsAluno(false);
         } else {
             System.out.println("Opção incorreta!");
         }
@@ -71,5 +67,19 @@ public class Aluno {
      */
     public boolean isAluno() {
         return isAluno;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @param cpf the cpf to set
+     */
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }

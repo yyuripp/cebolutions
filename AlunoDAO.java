@@ -25,8 +25,7 @@ public class AlunoDAO {
     public static void main(String[] args) {
     }
     
-    public static void inserirAluno() {
-        Aluno a = new Aluno();
+    public static void inserirAluno(Aluno a) {
         String nomeAluno = a.getNome();
         String CPFAluno = a.getCpf();
         boolean isAluno = a.isAluno();

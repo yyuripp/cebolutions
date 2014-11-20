@@ -27,30 +27,40 @@ public class RelacaoSatisfacaoPerguntaDAO {
     static CallableStatement cs = null;
 
     public static void main(String[] args) {
-
+        short[] respS = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+        //RelacaoSatisfacaoPerguntaDAO rsp = new RelacaoSatisfacaoPerguntaDAO();
+        //rsp.iniciarConexao();
+        //rsp.inserirResp(respS, "1234");
+        //rsp.encerraConexao();
     }
-
-    public static void inserirResp(char[] resp) {
-        short count = 0;
+    public RelacaoSatisfacaoPerguntaDAO (){
+        
+    }
+    public void inserirResp(short[] respSatis, String cpf) {
+        short idAluno = 1;
         ResultSet perg;
         try {
-            perg = stmt.executeQuery("SELECT COUNT(1) total FROM tblAluno");
-            count = perg.getShort("total");
+            perg = stmt.executeQuery("SELECT idAluno FROM tblAluno WHERE CPFAluno like '"+cpf+"'");
+            while (perg.next()) {
+                idAluno = perg.getShort("idAluno");
+            }
+            
         } catch (SQLException ex) {
             System.out.println("");
         }
 
         try {
-            
-            cs = conn.prepareCall("{call USI_RelacaoSatisfacaoPerguntas(?,?,?)}");
-            GrauSatisfacao s = new GrauSatisfacao();
-            short respSatis [] = s.getResp();
-            for (short i = 1; i <= 10; i++) {
-                    cs.setShort(1, i);
-                    cs.setShort(2, respSatis[i]);
-                    cs.setShort(3, count);
+            short j = 1;
+            for (int i = 0; i < 10; i++) {
+                cs = conn.prepareCall("{call USI_RelacaoSatisfacaoPerguntas(?,?,?)}");
+                cs.setShort(1, respSatis[i]);
+                cs.setShort(2, j);
+                cs.setShort(3, idAluno);
+                cs.execute();
+                j++;
             }
-            cs.execute();
+            
+            
         } catch (SQLException ex) {
             System.out.println("Não foi possível inserir.");
             System.out.println("SQLException: " + ex.getMessage());
@@ -59,7 +69,7 @@ public class RelacaoSatisfacaoPerguntaDAO {
         }
     }
 
-    public static void iniciarConexao() {
+    public void iniciarConexao() {
         Conexao conexao = new Conexao();
         try {
             conn = conexao.getConexao();
@@ -72,7 +82,7 @@ public class RelacaoSatisfacaoPerguntaDAO {
         }
     }
 
-    public static void encerraConexao() {
+    public void encerraConexao() {
         Conexao conexao = new Conexao();
         try {
             conn.close();

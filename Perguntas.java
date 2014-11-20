@@ -20,11 +20,11 @@ public class Perguntas {
     static Connection conn;
     static Statement stmt;
     private String[] perguntas = new String[10];
+    
     private int i = 0;
     
     public void populaVetor(String perg) {
         perguntas[i] = perg;
-        //System.out.println("Perguntas: " + perguntas[i]);
         i++;
     }
     
@@ -46,25 +46,8 @@ public class Perguntas {
             e.printStackTrace();
         }
     }
-
-    public char[] perguntasUsuario() {
-        Scanner entrada = new Scanner(System.in);
-        char[] resp = new char[10];
-        for (int i = 0; i < perguntas.length; i++) {
-            System.out.println(perguntas[i]);
-            System.out.println("A. Muito bom");
-            System.out.println("B. Bom");
-            System.out.println("C. Regular");
-            System.out.println("D. Ruim");
-            System.out.println("E. Muito Ruim");
-            System.out.println("");
-            System.out.print("Resposta: ");
-            resp[i] = entrada.next().charAt(0);
-        }
-        return resp;
-    }
     
-    public String[] getPerguntas() {
+    public String [] getPerguntas() {
         return perguntas;
     }
     public void imprimePerguntas(int i){
